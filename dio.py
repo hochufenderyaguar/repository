@@ -34,6 +34,12 @@ class Window(QDialog):
         self.map_label.setPixmap(self.pixmap)
 
     def keyPressEvent(self, event):
+        if event.key() == Qt.Key_PageUp:
+            scale = int(self.scale_edit.text()) + 1
+            self.scale_edit.setText(str(scale) if scale < 18 else '17')
+        if event.key() == Qt.Key_PageDown:
+            scale = int(self.scale_edit.text()) - 1
+            self.scale_edit.setText(str(scale) if scale > -1 else '0')
         if event.key() == Qt.Key_Right:
             print(1)
         if event.key() == Qt.Key_Up:
