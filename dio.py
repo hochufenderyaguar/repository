@@ -1,6 +1,7 @@
 import sys
 import requests
 from PyQt5 import uic
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog, QApplication
 
@@ -32,6 +33,17 @@ class Window(QDialog):
         self.pixmap = QPixmap(self.map_file)
         self.map_label.setPixmap(self.pixmap)
 
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Right:
+            print(1)
+        if event.key() == Qt.Key_Up:
+            self.long_edit.setText(str(float(self.long_edit.text()) + 0.1))
+            self.createMap()
+        if event.key() == Qt.Key_Down:
+            pass
+        if event.key() == Qt.Key_Left:
+            pass
+
 
 def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
@@ -43,3 +55,5 @@ if __name__ == '__main__':
     window.show()
     sys.excepthook = except_hook
     sys.exit(app.exec())
+
+# 37.677751,55.757718
