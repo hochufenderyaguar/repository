@@ -44,11 +44,11 @@ class Window(QDialog):
             print(1)
         if event.key() == Qt.Key_Up:
             self.long_edit.setText(str(float(self.long_edit.text()) + 0.1))
-            self.createMap()
         if event.key() == Qt.Key_Down:
             pass
         if event.key() == Qt.Key_Left:
             pass
+        self.createMap()
 
 
 def except_hook(cls, exception, traceback):
