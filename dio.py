@@ -61,7 +61,7 @@ class Window(QDialog):
         self.createMap()
 
     def click_radio_btn(self, btn):
-        # там поскольку sat - jpg, то не отображается
+        # там потому что sat - jpg, то не отображается
         text = btn.text()
         if text == 'схема':
             self.vid = "map"
