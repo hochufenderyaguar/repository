@@ -35,6 +35,12 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
   </widget>
   <widget class="QLineEdit" name="long_edit">
    <property name="geometry">
@@ -62,8 +68,8 @@
   <widget class="QLineEdit" name="scale_edit">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>490</y>
+     <x>540</x>
+     <y>460</y>
      <width>231</width>
      <height>41</height>
     </rect>
@@ -99,13 +105,52 @@
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>460</y>
+     <y>430</y>
      <width>231</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Масштабирование</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>550</y>
+     <width>82</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>схема</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>550</y>
+     <width>82</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>гибрид</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_3">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>550</y>
+     <width>82</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>спутник</string>
    </property>
   </widget>
  </widget>

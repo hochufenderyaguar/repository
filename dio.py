@@ -3,7 +3,7 @@ import requests
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtWidgets import QDialog, QApplication, QButtonGroup
 
 
 class Window(QDialog):
@@ -17,14 +17,23 @@ class Window(QDialog):
         self.scale = None
         self.server = 'http://static-maps.yandex.ru/1.x/'
         self.btn.clicked.connect(self.createMap)
+        self.vid = "map"
+        self.btn_group = QButtonGroup()
+        self.btn_group.addButton(self.radioButton)
+        self.btn_group.addButton(self.radioButton_2)
+        self.btn_group.addButton(self.radioButton_3)
+        self.btn_group.buttonClicked.connect(self.click_radio_btn)
+        self.width_edit.setText('37.677751')
+        self.long_edit.setText('55.757718')
 
     def createMap(self):
+        print(self.vid)
         self.coords = self.width_edit.text(), self.long_edit.text()
         self.scale = self.scale_edit.text()
         params = {
             'll': ','.join([self.coords[0], self.coords[1]]),
             'z': self.scale,
-            'l': "map"
+            'l': self.vid
         }
         response = requests.get(self.server, params=params)
         self.map_file = 'map.png'
@@ -32,6 +41,7 @@ class Window(QDialog):
             file.write(response.content)
         self.pixmap = QPixmap(self.map_file)
         self.map_label.setPixmap(self.pixmap)
+        self.map_label.setFocus()
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
@@ -48,6 +58,17 @@ class Window(QDialog):
             pass
         if event.key() == Qt.Key_Left:
             pass
+        self.createMap()
+
+    def click_radio_btn(self, btn):
+        # там поскольку sat - jpg, то не отображается
+        text = btn.text()
+        if text == 'схема':
+            self.vid = "map"
+        elif text == 'спутник':
+            self.vid = "sat"
+        else:
+            self.vid = "sat,skl"
         self.createMap()
 
 
